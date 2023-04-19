@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 add_action('wp_enqueue_scripts', function(){
-	wp_enqueue_script('ws-extend-smartmenus.min.js', plugin_dir_url( __FILE__ ) . 'assets/ws-extend-smartmenus.min.js', array('smartmenus'), '1.0.0');
+	wp_enqueue_script('ws-extend-smartmenus.min.js', plugin_dir_url( __FILE__ ) . 'assets/ws-extend-smartmenus.min.js', array('smartmenus'), '1.0.0', true);
 });
 
 ?>
