@@ -10,7 +10,43 @@ A behaviour where a click on the name opens its link and a click on the sub indi
 
 Therefore you can use this fix.
 
-## Instalaltion
+## Fixes
+
+- First of all, clicks on the sub-indicator should be detected by smartmenus. But because Elementor sets svg to the `subIndicatorText` option of smartmenus, clicks often go undetected
+```diff
+-- var subArrowClicked = $(e.target).is("span.sub-arrow"),
+++ var subArrowClicked = $(e.target).is("span.sub-arrow") || $(e.target).is("span.sub-arrow *"),				  
+```
+
+- Second, a click on the link always opens the submenu when its closed. I wanted the behaviour that a click on the link opens the link and only clicks on the sub indicator icon open/closes the sub-menu. Therefore I have added an option `skipCollapsible`. If set to true, a click on the link will always activate it.
+
+```diff
+++ if (!this.opts.skipCollapsible || subArrowClicked) {
+			// try to activate the item and show the sub
+			this.itemActivate($a);
+			// if "itemActivate" showed the sub, prevent the click so that the link is not loaded
+			// if it couldn't show it, then the sub menus are disabled with an !important declaration (e.g. via mobile styles) so let the link get loaded
+			 if ($sub.is(":visible")) {
+				this.focusActivated = true;
+				return false;
+			}
+++		}				  
+```
+
+## Options
+
+In case you want to set the described collapsible behavior. You have to change the data on the smartmenu `<ul>` with jQuery, like this:
+
+```js
+jQuery(document).ready(function(){
+	var $ul = jQuery('ul:first');
+	$ul.data("smartmenus").opts.skipCollapsible = true;
+});
+```
+This option will achieve the following behavior:
+![2023-04-20-00-07-46](https://user-images.githubusercontent.com/92471929/233210705-f430c1a4-20c7-45f1-b362-3f4799fb59f1.gif)
+
+## Installation
 
 ### Install per Plugin
 
