@@ -12,6 +12,8 @@ Therefore you can use this fix.
 
 ## Fixes
 
+The fix adds minimal changes to the `itemClick` function of the smartmenus.js libary.
+
 - First of all, clicks on the sub-indicator should be detected by smartmenus. But because Elementor sets svg to the `subIndicatorText` option of smartmenus, clicks often go undetected
 ```diff
 -- var subArrowClicked = $(e.target).is("span.sub-arrow"),
