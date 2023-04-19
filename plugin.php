@@ -4,7 +4,7 @@
  * Description: Fix for the Elementor nav Menu Widget
  * Plugin URI:  https://github.com/rloes/elementor-fixed-nav-menu
  * Version:     1.0.0
- * Author:      Robin Löseke
+ * Author:      Robin - Westsite
  * Author URI:  https://westsite-webdesign.de/
  * Text Domain: ws-elementor-fixed-nav-menu
  *
